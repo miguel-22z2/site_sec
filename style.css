@@ -1,0 +1,235 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Variáveis de Cores */
+:root {
+    --laranja: #ff6600;
+    --preto: #000000;
+    --cinza-escuro: #1a1a1a;
+    --branco: #ffffff;
+    --cinza-claro: #f4f4f4;
+}
+
+/* Animação de Entrada */
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-entry {
+    animation: fadeInSlide 1s ease-out forwards;
+}
+
+body {
+    background-color: var(--branco);
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Cabeçalho Sticky */
+header {
+    background-color: var(--preto);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--laranja);
+}
+
+/* Seção Hero (Nova Imagem de Fundo e Gradiente) */
+.hero {
+    /* Gradiente preto para contraste e nova imagem dos postes de luz */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('image_7.png') center/cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--branco);
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--laranja);
+    margin-bottom: 20px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background-color: var(--laranja);
+    color: var(--branco);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.btn-cta:hover {
+    background-color: #e65c00;
+}
+
+/* Sobre Nós */
+.about {
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.about h2::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: var(--laranja);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about-text {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Serviços (Ajustado para 4 Cartões) */
+.services {
+    background-color: var(--cinza-claro);
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.services h2 { margin-bottom: 50px; font-size: 2.2rem; }
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Permite que os cartões quebrem de linha se necessário */
+}
+
+.card {
+    background: var(--branco);
+    width: 320px; /* Um pouco mais estreito para 4 cartões */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: left;
+    transition: 0.3s;
+    border-bottom: 4px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-bottom: 4px solid var(--laranja);
+}
+
+/* Container para as imagens dos serviços */
+.service-image-container {
+    width: 100%;
+    height: 180px; /* Altura fixa para as imagens */
+    overflow: hidden; /* Corta o excesso da imagem */
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px dashed rgba(255, 102, 0, 0.3); /* Uma borda sutil em laranja */
+}
+
+.service-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 60px 10% 20px;
+    text-align: center;
+}
+
+footer h2 { color: var(--laranja); margin-bottom: 20px; }
+
+footer hr {
+    border: 0;
+    border-top: 1px solid #333;
+    margin: 30px 0;
+}
+
+.credits {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Botão WhatsApp (FIXO E GLOBAL) */
+.whatsapp-btn {
+    position: fixed; /* Isso garante que ele flutue sobre tudo, no site todo */
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999; /* Garante que fique em cima de tudo */
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+}
