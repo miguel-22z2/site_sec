@@ -6,6 +6,22 @@
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* ROLAGEM SUAVE 
+   A propriedade é aplicada no HTML para garantir que o navegador 
+   entenda que toda movimentação por âncoras deve ser animada.
+*/
+html {
+    scroll-behavior: smooth !important;
+}
+
+/* AJUSTE DE MARGEM 
+   Como seu header é fixo (sticky), precisamos desse respiro para o 
+   título não ficar "esmagado" no topo da tela.
+*/
+section, footer {
+    scroll-margin-top: 90px;
+}
+
 /* Variáveis de Cores */
 :root {
     --laranja: #ff6600;
@@ -29,7 +45,6 @@ body {
     background-color: var(--branco);
     color: #333;
     line-height: 1.6;
-    scroll-behavior: smooth;
 }
 
 /* Cabeçalho Sticky */
@@ -68,15 +83,32 @@ nav a {
     text-transform: uppercase;
     font-size: 14px;
     transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
 }
 
 nav a:hover {
     color: var(--laranja);
 }
 
-/* Seção Hero (Nova Imagem de Fundo e Gradiente) */
+/* Efeito de linha deslizando sob os botões do menu */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--laranja);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Seção Hero */
 .hero {
-    /* Gradiente preto para contraste e nova imagem dos postes de luz */
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('image_7.png') center/cover;
     height: 70vh;
     display: flex;
@@ -140,7 +172,7 @@ nav a:hover {
     color: #555;
 }
 
-/* Serviços (Ajustado para 4 Cartões) */
+/* Serviços */
 .services {
     background-color: var(--cinza-claro);
     padding: 80px 10%;
@@ -153,12 +185,12 @@ nav a:hover {
     display: flex;
     justify-content: center;
     gap: 30px;
-    flex-wrap: wrap; /* Permite que os cartões quebrem de linha se necessário */
+    flex-wrap: wrap;
 }
 
 .card {
     background: var(--branco);
-    width: 320px; /* Um pouco mais estreito para 4 cartões */
+    width: 320px;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -172,20 +204,19 @@ nav a:hover {
     border-bottom: 4px solid var(--laranja);
 }
 
-/* Container para as imagens dos serviços */
 .service-image-container {
     width: 100%;
-    height: 180px; /* Altura fixa para as imagens */
-    overflow: hidden; /* Corta o excesso da imagem */
+    height: 180px;
+    overflow: hidden;
     margin-bottom: 15px;
     border-radius: 5px;
-    border: 1px dashed rgba(255, 102, 0, 0.3); /* Uma borda sutil em laranja */
+    border: 1px dashed rgba(255, 102, 0, 0.3);
 }
 
 .service-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+    object-fit: cover;
 }
 
 /* Rodapé */
@@ -209,9 +240,9 @@ footer hr {
     color: #888;
 }
 
-/* Botão WhatsApp (FIXO E GLOBAL) */
+/* Botão WhatsApp */
 .whatsapp-btn {
-    position: fixed; /* Isso garante que ele flutue sobre tudo, no site todo */
+    position: fixed;
     bottom: 30px;
     right: 30px;
     background-color: #25d366;
@@ -224,7 +255,7 @@ footer hr {
     justify-content: center;
     font-size: 35px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 9999; /* Garante que fique em cima de tudo */
+    z-index: 9999;
     text-decoration: none;
     transition: 0.3s ease;
 }

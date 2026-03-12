@@ -50,7 +50,7 @@
                     <img src="image_2.png" alt="Instalação de Painel Elétrico SEC">
                 </div>
                 <h3>Materiais elétricos de alta tecnologia e qualidade</h3>
-                <p>Trabalhando com os maiores fabricantes de materiais elétricos do mercado brasileiro, em especial, produtos da Schneider Electric, maior fabricante mundial de acionamentos elétricos.</p>
+                <p>Trabalhando com os maiores fabricantes de materiais elétricos do mercado brasileiro, em especial, produtos da Schneider Electric.</p>
             </div>
 
             <div class="card">
@@ -66,7 +66,7 @@
                     <img src="image_4.png" alt="Conjunto de Painéis Elétricos SEC">
                 </div>
                 <h3>Iluminação Pública</h3>
-                <p>Com grande atuação no seguimento de Iluminação, a SEC se destaca pela qualidade dos materiais aplicados nas obras de iluminação, obtendo excelente resultado, proporcionando iluminações eficientes, maior segurança e maior economia.</p>
+                <p>A SEC se destaca pela qualidade dos materiais aplicados, proporcionando iluminações eficientes e maior economia.</p>
             </div>
 
             <div class="card">
@@ -74,7 +74,7 @@
                     <img src="image_6.png" alt="Manutenção de Painel SEC">
                 </div>
                 <h3>Sinóticos de Comando</h3>
-                <p>Feitos sob medida para aplicações em diversos segmentos, para comando de plantas indústriais.</p>
+                <p>Feitos sob medida para aplicações em diversos segmentos, para comando de plantas industriais.</p>
             </div>
 
         </div>
@@ -84,15 +84,42 @@
         <div class="footer-content">
             <h2>Fale Conosco</h2>
             <p><i class="fas fa-phone"></i> (69) 3451-6519</p>
-            <p><i class="fas fa-envelope"></i> contato@sec-engenharia.com</p>
+            <p>
+                <i class="fas fa-envelope"></i> 
+                <a href="mailto:contato@sec-engenharia.com" style="color: inherit; text-decoration: none;">
+                    contato@sec-engenharia.com
+                </a>
+            </p>
             <hr>
             <p class="credits">&copy; 2026 Este site foi desenvolvido por Miguel Alessi Lenzi. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <a href="https://wa.me/556934516519" class="whatsapp-btn" target="_blank" title="Fale conosco agora">
-    <i class="fab fa-whatsapp"></i>
-</a>
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const headerOffset = 90; // Ajuste conforme a altura do seu header
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
