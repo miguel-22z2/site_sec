@@ -1,9 +1,10 @@
-/* Reset Básico */
+/* ==========================================
+   RESET & BASE
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* ROLAGEM SUAVE 
@@ -12,42 +13,148 @@
 */
 html {
     scroll-behavior: smooth !important;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
 }
 
 /* AJUSTE DE MARGEM 
    Como seu header é fixo (sticky), precisamos desse respiro para o 
    título não ficar "esmagado" no topo da tela.
 */
-section, footer {
+section,
+footer {
     scroll-margin-top: 90px;
 }
 
-/* Variáveis de Cores */
+/* ==========================================
+   DESIGN TOKENS / VARIÁVEIS
+   ========================================== */
 :root {
     --laranja: #ff6600;
+    --laranja-hover: #e55a00;
+    --laranja-glow: rgba(255, 102, 0, 0.25);
     --preto: #000000;
     --cinza-escuro: #1a1a1a;
+    --cinza-medio: #2a2a2a;
     --branco: #ffffff;
-    --cinza-claro: #f4f4f4;
+    --cinza-claro: #f5f6f8;
+    --cinza-texto: #555;
+    --cinza-credits: #888;
+
+    --font-primary: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-header: 0 2px 20px rgba(0, 0, 0, 0.4);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
-/* Animação de Entrada */
+/* ==========================================
+   ANIMAÇÕES
+   ========================================== */
 @keyframes fadeInSlide {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
 .fade-in-entry {
-    animation: fadeInSlide 1s ease-out forwards;
+    animation: fadeInSlide 0.8s ease-out forwards;
 }
 
+/* Animação de scroll — estado base (invisível) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+/* Animação de scroll — estado visível */
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay escalonado para os cards */
+.card.animate-on-scroll:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.card.animate-on-scroll:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.card.animate-on-scroll:nth-child(3) {
+    transition-delay: 0.24s;
+}
+
+.card.animate-on-scroll:nth-child(4) {
+    transition-delay: 0.36s;
+}
+
+/* ==========================================
+   BODY
+   ========================================== */
 body {
+    font-family: var(--font-primary);
     background-color: var(--branco);
     color: #333;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-/* Cabeçalho Sticky */
+/* ==========================================
+   HEADER / NAVEGAÇÃO
+   ========================================== */
 header {
     background-color: var(--preto);
     padding: 10px 5%;
@@ -57,13 +164,21 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.95);
+    box-shadow: var(--shadow-header);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .logo-img {
-    height: 70px;
+    height: 65px;
     width: auto;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-base);
 }
 
 .logo-img:hover {
@@ -73,7 +188,8 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 30px;
+    align-items: center;
 }
 
 nav a {
@@ -81,8 +197,9 @@ nav a {
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 14px;
-    transition: color 0.3s;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    transition: color var(--transition-base);
     position: relative;
     padding-bottom: 5px;
 }
@@ -100,58 +217,160 @@ nav a::after {
     bottom: 0;
     left: 0;
     background-color: var(--laranja);
-    transition: width 0.3s ease;
+    transition: width var(--transition-base);
+    border-radius: 1px;
 }
 
 nav a:hover::after {
     width: 100%;
 }
 
-/* Seção Hero */
+/* ==========================================
+   BOTÃO HAMBÚRGUER (Mobile)
+   ========================================== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1100;
+    position: relative;
+}
+
+.hamburger-line {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background-color: var(--branco);
+    border-radius: 3px;
+    transition: all var(--transition-base);
+    transform-origin: center;
+}
+
+/* Animação do X ao abrir */
+.menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==========================================
+   OVERLAY DE NAVEGAÇÃO (Mobile)
+   ========================================== */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.nav-overlay.active {
+    opacity: 1;
+}
+
+/* ==========================================
+   SEÇÃO HERO
+   ========================================== */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('image_7.png') center/cover;
-    height: 70vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.6)), url('image_7.png') center/cover no-repeat;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--branco);
-    padding: 0 20px;
+    padding: 60px 20px;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to top, var(--branco), transparent);
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 750px;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
     color: var(--laranja);
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    line-height: 1.7;
+    opacity: 0.92;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .btn-cta {
     display: inline-block;
     background-color: var(--laranja);
     color: var(--branco);
-    padding: 12px 30px;
+    padding: 14px 36px;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-top: 20px;
-    transition: background 0.3s;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 28px;
+    transition: background var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
+    letter-spacing: 0.3px;
 }
 
 .btn-cta:hover {
-    background-color: #e65c00;
+    background-color: var(--laranja-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px var(--laranja-glow);
 }
 
-/* Sobre Nós */
+.btn-cta:active {
+    transform: translateY(0);
+}
+
+/* ==========================================
+   SOBRE NÓS
+   ========================================== */
 .about {
-    padding: 100px 10%;
+    padding: 90px 8%;
     text-align: center;
 }
 
 .about h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
     margin-bottom: 30px;
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 14px;
+    font-weight: 700;
+    color: var(--cinza-escuro);
 }
 
 .about h2::after {
@@ -163,104 +382,448 @@ nav a:hover::after {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    border-radius: 2px;
 }
 
 .about-text {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
-    font-size: 1.1rem;
-    color: #555;
+    font-size: 1.05rem;
+    color: var(--cinza-texto);
+    line-height: 1.85;
 }
 
-/* Serviços */
+.about-text p+p {
+    margin-top: 16px;
+}
+
+/* ==========================================
+   SERVIÇOS
+   ========================================== */
 .services {
     background-color: var(--cinza-claro);
-    padding: 80px 10%;
+    padding: 80px 5%;
     text-align: center;
 }
 
-.services h2 { margin-bottom: 50px; font-size: 2.2rem; }
+.services h2 {
+    margin-bottom: 50px;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    font-weight: 700;
+    color: var(--cinza-escuro);
+    position: relative;
+    padding-bottom: 14px;
+}
+
+.services h2::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: var(--laranja);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
 
 .cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .card {
     background: var(--branco);
-    width: 320px;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 0;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
     text-align: left;
-    transition: 0.3s;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     border-bottom: 4px solid transparent;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     border-bottom: 4px solid var(--laranja);
+    box-shadow: var(--shadow-lg);
 }
 
 .service-image-container {
     width: 100%;
-    height: 180px;
+    height: 200px;
     overflow: hidden;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px dashed rgba(255, 102, 0, 0.3);
+    position: relative;
 }
 
 .service-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform var(--transition-slow);
 }
 
-/* Rodapé */
+.card:hover .service-image-container img {
+    transform: scale(1.06);
+}
+
+.card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--cinza-escuro);
+    margin: 18px 22px 8px;
+    line-height: 1.4;
+}
+
+.card p {
+    font-size: 0.92rem;
+    color: var(--cinza-texto);
+    margin: 0 22px 22px;
+    line-height: 1.65;
+}
+
+/* ==========================================
+   RODAPÉ
+   ========================================== */
 footer {
     background-color: var(--preto);
     color: var(--branco);
-    padding: 60px 10% 20px;
+    padding: 60px 8% 24px;
     text-align: center;
 }
 
-footer h2 { color: var(--laranja); margin-bottom: 20px; }
+footer h2 {
+    color: var(--laranja);
+    margin-bottom: 20px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+}
+
+footer p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    line-height: 1.8;
+}
+
+footer p i {
+    margin-right: 8px;
+    color: var(--laranja);
+}
+
+.footer-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.footer-link:hover {
+    color: var(--laranja);
+}
 
 footer hr {
     border: 0;
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--cinza-medio);
     margin: 30px 0;
 }
 
 .credits {
-    font-size: 0.9rem;
-    color: #888;
+    font-size: 0.85rem;
+    color: var(--cinza-credits);
 }
 
-/* Botão WhatsApp */
+/* ==========================================
+   BOTÃO WHATSAPP FLUTUANTE
+   ========================================== */
 .whatsapp-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
+    position: fixed !important;
+    bottom: 28px !important;
+    right: 28px !important;
     background-color: #25d366;
     color: #fff;
-    width: 60px;
-    height: 60px;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
-    display: flex;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     align-items: center;
     justify-content: center;
-    font-size: 35px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 9999;
+    font-size: 32px;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+    z-index: 99999 !important;
     text-decoration: none;
-    transition: 0.3s ease;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
+    animation: float 3s ease-in-out infinite;
 }
 
 .whatsapp-btn:hover {
-    transform: scale(1.1);
-    background-color: #128c7e;
+    transform: scale(1.12);
+    background-color: #1ebe5d;
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.55);
+    animation: none;
+}
+
+/* ==========================================
+   RESPONSIVO — TABLET (até 900px)
+   ========================================== */
+@media (max-width: 900px) {
+
+    /* Mostra o hambúrguer */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Overlay visível */
+    .nav-overlay {
+        display: block;
+    }
+
+    /* Menu lateral deslizante */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        height: 100dvh;
+        background-color: var(--cinza-escuro);
+        z-index: 999;
+        transition: right var(--transition-base);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    nav.nav-open {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding: 0 30px;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav a {
+        display: block;
+        padding: 18px 0;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        text-align: center;
+    }
+
+    nav a::after {
+        display: none;
+    }
+
+    nav a:hover {
+        color: var(--laranja);
+    }
+
+    /* Ajustes de layout */
+    .hero {
+        min-height: 55vh;
+        padding: 50px 24px;
+    }
+
+    .about {
+        padding: 70px 6%;
+    }
+
+    .services {
+        padding: 60px 5%;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    footer {
+        padding: 50px 6% 20px;
+    }
+}
+
+/* ==========================================
+   RESPONSIVO — MOBILE GRANDE (até 640px)
+   ========================================== */
+@media (max-width: 640px) {
+
+    section,
+    footer {
+        scroll-margin-top: 75px;
+    }
+
+    header {
+        padding: 8px 4%;
+    }
+
+    .logo-img {
+        height: 52px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 450px;
+    }
+
+    .service-image-container {
+        height: 180px;
+    }
+
+    .about {
+        padding: 60px 5%;
+    }
+
+    .about-text {
+        font-size: 0.98rem;
+    }
+
+    .services {
+        padding: 55px 5%;
+    }
+
+    footer {
+        padding: 45px 5% 18px;
+    }
+
+    footer p {
+        font-size: 0.93rem;
+    }
+
+    /* WhatsApp button menor no mobile */
+    .whatsapp-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* ==========================================
+   RESPONSIVO — MOBILE PEQUENO (até 400px)
+   ========================================== */
+@media (max-width: 400px) {
+    .hero {
+        min-height: 50vh;
+        padding: 40px 16px;
+    }
+
+    .hero h1 {
+        font-size: 1.55rem;
+    }
+
+    .hero p {
+        font-size: 0.92rem;
+    }
+
+    .btn-cta {
+        padding: 12px 28px;
+        font-size: 0.88rem;
+    }
+
+    .about h2,
+    .services h2 {
+        font-size: 1.5rem;
+    }
+
+    .card h3 {
+        font-size: 0.98rem;
+        margin: 14px 16px 6px;
+    }
+
+    .card p {
+        font-size: 0.87rem;
+        margin: 0 16px 16px;
+    }
+
+    .credits {
+        font-size: 0.78rem;
+    }
+
+    nav {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+/* ==========================================
+   DESKTOP GRANDE (a partir de 1400px)
+   ========================================== */
+@media (min-width: 1400px) {
+    header {
+        padding: 12px 8%;
+    }
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    .about {
+        padding: 110px 12%;
+    }
+
+    .about-text {
+        font-size: 1.12rem;
+    }
+
+    .services {
+        padding: 100px 8%;
+    }
+
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1500px;
+    }
+
+    footer {
+        padding: 70px 12% 28px;
+    }
+}
+
+/* ==========================================
+   PREFERÊNCIA DE MOVIMENTO REDUZIDO
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .animate-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+
+    .whatsapp-btn {
+        animation: none;
+    }
+}
+
+/* ==========================================
+   SELEÇÃO DE TEXTO
+   ========================================== */
+::selection {
+    background-color: var(--laranja);
+    color: var(--branco);
+}
+
+::-moz-selection {
+    background-color: var(--laranja);
+    color: var(--branco);
 }

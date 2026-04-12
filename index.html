@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SEC - Serviços Elétricos e Construção. Soluções completas em instalações elétricas, painéis de comando, iluminação pública e construção civil em Rondônia.">
     <title>SEC - Serviços Elétricos e Construção</title>
     <link rel="icon" type="image/x-icon" href="image_1.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body class="fade-in-entry">
-    
-    <header>
+
+    <!-- Botão WhatsApp flutuante (primeiro elemento para garantir visibilidade) -->
+    <a href="https://wa.me/556934516519" class="whatsapp-btn" target="_blank" title="Fale conosco agora"
+        aria-label="Contato via WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <header id="main-header">
         <a href="#home" class="logo">
             <img src="image_1.png" alt="SEC Materiais Elétricos" class="logo-img">
         </a>
-        <nav>
+
+        <!-- Botão Hambúrguer (mobile) -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <nav id="mainNav">
             <ul>
                 <li><a href="#home">Início</a></li>
                 <li><a href="#sobre">Sobre Nós</a></li>
@@ -23,6 +47,9 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Overlay para fechar menu mobile ao clicar fora -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -36,8 +63,11 @@
         <div class="container">
             <h2>Sobre Nós</h2>
             <div class="about-text">
-                <p>Com vasta experiência no setor de elétrica e construção, a <strong>SEC</strong> foca em entregar segurança, modernidade e eficiência. Nossa equipe é preparada para lidar desde pequenos reparos até grandes projetos estruturais.</p>
-                <p>Acreditamos que uma obra bem feita começa com materiais de qualidade e termina com a satisfação total do cliente.</p>
+                <p>Com vasta experiência no setor de elétrica e construção, a <strong>SEC</strong> foca em entregar
+                    segurança, modernidade e eficiência. Nossa equipe é preparada para lidar desde pequenos reparos até
+                    grandes projetos estruturais.</p>
+                <p>Acreditamos que uma obra bem feita começa com materiais de qualidade e termina com a satisfação total
+                    do cliente.</p>
             </div>
         </div>
     </section>
@@ -45,18 +75,19 @@
     <section id="servicos" class="services">
         <h2>Nossos Serviços</h2>
         <div class="cards">
-            
+
             <div class="card">
                 <div class="service-image-container">
-                    <img src="image_2.png" alt="Instalação de Painel Elétrico SEC">
+                    <img src="image_2.png" alt="Instalação de Painel Elétrico SEC" loading="lazy">
                 </div>
                 <h3>Materiais elétricos de alta tecnologia e qualidade</h3>
-                <p>Trabalhando com os maiores fabricantes de materiais elétricos do mercado brasileiro, em especial, produtos da Schneider Electric.</p>
+                <p>Trabalhando com os maiores fabricantes de materiais elétricos do mercado brasileiro, em especial,
+                    produtos da Schneider Electric.</p>
             </div>
 
             <div class="card">
                 <div class="service-image-container">
-                    <img src="image_3.png" alt="Detalhe de Painel Elétrico SEC">
+                    <img src="image_3.png" alt="Detalhe de Painel Elétrico SEC" loading="lazy">
                 </div>
                 <h3>Quadros de Comando e Proteção de Motores</h3>
                 <p>Proteção e comando de motores feitos sob medida para sua necessidade.</p>
@@ -64,15 +95,16 @@
 
             <div class="card">
                 <div class="service-image-container">
-                    <img src="image_4.png" alt="Conjunto de Painéis Elétricos SEC">
+                    <img src="image_4.png" alt="Conjunto de Painéis Elétricos SEC" loading="lazy">
                 </div>
                 <h3>Iluminação Pública</h3>
-                <p>A SEC se destaca pela qualidade dos materiais aplicados, proporcionando iluminações eficientes e maior economia.</p>
+                <p>A SEC se destaca pela qualidade dos materiais aplicados, proporcionando iluminações eficientes e
+                    maior economia.</p>
             </div>
 
             <div class="card">
                 <div class="service-image-container">
-                    <img src="image_6.png" alt="Manutenção de Painel SEC">
+                    <img src="image_6.png" alt="Manutenção de Painel SEC" loading="lazy">
                 </div>
                 <h3>Sinóticos de Comando</h3>
                 <p>Feitos sob medida para aplicações em diversos segmentos, para comando de plantas industriais.</p>
@@ -86,21 +118,20 @@
             <h2>Fale Conosco</h2>
             <p><i class="fas fa-phone"></i> (69) 3451-6519</p>
             <p>
-                <i class="fas fa-envelope"></i> 
-                <a href="mailto:contato@sec-engenharia.com" style="color: inherit; text-decoration: none;">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:contato@sec-engenharia.com" class="footer-link">
                     contato@sec-engenharia.com
                 </a>
             </p>
             <hr>
-            <p class="credits">&copy; 2026 Este site foi desenvolvido por Miguel Alessi Lenzi. Todos os direitos reservados.</p>
+            <p class="credits">&copy; 2026 Este site foi desenvolvido por Miguel Alessi Lenzi. Todos os direitos
+                reservados.</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/556934516519" class="whatsapp-btn" target="_blank" title="Fale conosco agora">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
     <script>
+        // Smooth scroll para âncoras
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -109,7 +140,7 @@
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
-                    const headerOffset = 90; // Ajuste conforme a altura do seu header
+                    const headerOffset = 90;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -118,9 +149,75 @@
                         behavior: 'smooth'
                     });
                 }
+
+                // Fecha o menu mobile ao clicar em um link
+                closeMenu();
             });
+        });
+
+        // Menu Mobile Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const navOverlay = document.getElementById('navOverlay');
+        const body = document.body;
+
+        function openMenu() {
+            mainNav.classList.add('nav-open');
+            menuToggle.classList.add('active');
+            navOverlay.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mainNav.classList.remove('nav-open');
+            menuToggle.classList.remove('active');
+            navOverlay.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', function () {
+            if (mainNav.classList.contains('nav-open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        navOverlay.addEventListener('click', closeMenu);
+
+        // Header com sombra ao rolar
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animação de entrada dos cards ao surgir na tela
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .about-text, .services h2, .about h2').forEach(el => {
+            el.classList.add('animate-on-scroll');
+            observer.observe(el);
         });
     </script>
 
 </body>
+
 </html>
