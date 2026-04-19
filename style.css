@@ -489,11 +489,12 @@ nav a:hover::after {
    ONDE ATUAMOS
    ========================================== */
 .atuacao {
-    background-color: var(--cinza-escuro);
+    background-color: var(--preto);
     padding: 90px 8%;
     text-align: center;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid var(--cinza-medio);
 }
 
 .atuacao::before {
