@@ -147,7 +147,7 @@ footer {
    ========================================== */
 body {
     font-family: var(--font-primary);
-    background-color: var(--branco);
+    background-color: var(--preto);
     color: #333;
     line-height: 1.7;
 }
@@ -307,7 +307,7 @@ nav a:hover::after {
     left: 0;
     right: 0;
     height: 80px;
-    background: linear-gradient(to top, var(--branco), transparent);
+    background: linear-gradient(to top, var(--preto), transparent);
     pointer-events: none;
 }
 
@@ -362,6 +362,7 @@ nav a:hover::after {
 .about {
     padding: 90px 8%;
     text-align: center;
+    background-color: var(--preto);
 }
 
 .about h2 {
@@ -370,7 +371,7 @@ nav a:hover::after {
     position: relative;
     padding-bottom: 14px;
     font-weight: 700;
-    color: var(--cinza-escuro);
+    color: var(--branco);
 }
 
 .about h2::after {
@@ -389,7 +390,7 @@ nav a:hover::after {
     max-width: 800px;
     margin: 0 auto;
     font-size: 1.05rem;
-    color: var(--cinza-texto);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.85;
 }
 
@@ -401,7 +402,7 @@ nav a:hover::after {
    SERVIÇOS
    ========================================== */
 .services {
-    background-color: var(--cinza-claro);
+    background-color: var(--preto);
     padding: 80px 5%;
     text-align: center;
 }
@@ -410,7 +411,7 @@ nav a:hover::after {
     margin-bottom: 50px;
     font-size: clamp(1.7rem, 4vw, 2.3rem);
     font-weight: 700;
-    color: var(--cinza-escuro);
+    color: var(--branco);
     position: relative;
     padding-bottom: 14px;
 }
@@ -436,7 +437,7 @@ nav a:hover::after {
 }
 
 .card {
-    background: var(--branco);
+    background: var(--cinza-escuro);
     padding: 0;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
@@ -473,14 +474,14 @@ nav a:hover::after {
 .card h3 {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--cinza-escuro);
+    color: var(--branco);
     margin: 18px 22px 8px;
     line-height: 1.4;
 }
 
 .card p {
     font-size: 0.92rem;
-    color: var(--cinza-texto);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0 22px 22px;
     line-height: 1.65;
 }
