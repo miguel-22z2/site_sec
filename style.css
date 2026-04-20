@@ -12,9 +12,8 @@
    entenda que toda movimentação por âncoras deve ser animada.
 */
 html {
-    scroll-behavior: smooth !important;
+    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    overflow-x: hidden;
 }
 
 /* AJUSTE DE MARGEM 
@@ -117,6 +116,7 @@ footer {
     opacity: 0;
     transform: translateY(35px);
     transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    will-change: opacity, transform;
 }
 
 /* Animação de scroll — estado visível */
@@ -171,14 +171,13 @@ header {
 header.scrolled {
     background-color: rgba(0, 0, 0, 0.95);
     box-shadow: var(--shadow-header);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .logo-img {
     height: 65px;
     width: auto;
     transition: transform var(--transition-base);
+    will-change: transform;
 }
 
 .logo-img:hover {
@@ -250,6 +249,7 @@ nav a:hover::after {
     border-radius: 3px;
     transition: all var(--transition-base);
     transform-origin: center;
+    will-change: transform;
 }
 
 /* Animação do X ao abrir */
@@ -277,8 +277,6 @@ nav a:hover::after {
     z-index: 998;
     opacity: 0;
     transition: opacity var(--transition-base);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
 }
 
 .nav-overlay.active {
@@ -344,6 +342,7 @@ nav a:hover::after {
     margin-top: 28px;
     transition: background var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
     letter-spacing: 0.3px;
+    will-change: transform, box-shadow;
 }
 
 .btn-cta:hover {
@@ -445,6 +444,7 @@ nav a:hover::after {
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     border-bottom: 4px solid transparent;
     overflow: hidden;
+    will-change: transform, box-shadow, border-color;
 }
 
 .card:hover {
@@ -465,6 +465,7 @@ nav a:hover::after {
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow);
+    will-change: transform;
 }
 
 .card:hover .service-image-container img {
@@ -608,6 +609,7 @@ nav a:hover::after {
     cursor: pointer;
     font-family: var(--font-primary);
     outline: none;
+    will-change: background, border-color, transform;
 }
 
 .location-tag:hover {
@@ -663,6 +665,7 @@ footer p i {
     color: inherit;
     text-decoration: none;
     transition: color var(--transition-base);
+    will-change: color;
 }
 
 .footer-link:hover {
@@ -703,6 +706,7 @@ footer hr {
     text-decoration: none;
     transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
     animation: float 3s ease-in-out infinite;
+    will-change: transform;
 }
 
 .whatsapp-btn:hover {
