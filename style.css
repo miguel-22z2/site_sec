@@ -56,6 +56,14 @@ footer {
     --transition-slow: 0.5s ease;
 }
 
+@media (max-width: 640px) {
+    :root {
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.25s ease;
+        --transition-slow: 0.4s ease;
+    }
+}
+
 /* ==========================================
    ANIMAÇÕES
    ========================================== */
@@ -152,6 +160,12 @@ body {
     line-height: 1.7;
 }
 
+@media (max-width: 640px) {
+    body {
+        contain: layout style;
+    }
+}
+
 /* ==========================================
    HEADER / NAVEGAÇÃO
    ========================================== */
@@ -184,6 +198,12 @@ header.scrolled {
     transform: scale(1.05);
 }
 
+@media (max-width: 640px) {
+    .logo-img:hover {
+        transform: none;
+    }
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -205,6 +225,12 @@ nav a {
 
 nav a:hover {
     color: var(--laranja);
+}
+
+@media (max-width: 640px) {
+    nav a::after {
+        display: none !important;
+    }
 }
 
 /* Efeito de linha deslizando sob os botões do menu */
@@ -236,14 +262,25 @@ nav a:hover::after {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
+    padding: 10px 8px;
     z-index: 1100;
     position: relative;
+    transition: opacity var(--transition-base);
+}
+
+.menu-toggle:focus-visible {
+    outline: 2px solid var(--laranja);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.menu-toggle:active {
+    opacity: 0.8;
 }
 
 .hamburger-line {
     display: block;
-    width: 26px;
+    width: 28px;
     height: 3px;
     background-color: var(--branco);
     border-radius: 3px;
@@ -264,6 +301,23 @@ nav a:hover::after {
 
 .menu-toggle.active .hamburger-line:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 640px) {
+    .hamburger-line {
+        width: 26px;
+        height: 2.5px;
+        transition: all 0.2s ease;
+        will-change: auto;
+    }
+
+    .menu-toggle.active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
 }
 
 /* ==========================================
@@ -355,6 +409,16 @@ nav a:hover::after {
     transform: translateY(0);
 }
 
+@media (max-width: 640px) {
+    .btn-cta:hover {
+        transform: none;
+    }
+
+    .btn-cta:active {
+        transform: none;
+    }
+}
+
 /* ==========================================
    SOBRE NÓS
    ========================================== */
@@ -435,6 +499,12 @@ nav a:hover::after {
     margin: 0 auto;
 }
 
+@media (max-width: 640px) {
+    .cards {
+        contain: layout style paint;
+    }
+}
+
 .card {
     background: var(--cinza-escuro);
     padding: 0;
@@ -445,6 +515,18 @@ nav a:hover::after {
     border-bottom: 4px solid transparent;
     overflow: hidden;
     will-change: transform, box-shadow, border-color;
+}
+
+@media (max-width: 640px) {
+    .card {
+        contain: content;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        transition: none;
+    }
+
+    .card:hover {
+        transform: none;
+    }
 }
 
 .card:hover {
@@ -470,6 +552,12 @@ nav a:hover::after {
 
 .card:hover .service-image-container img {
     transform: scale(1.06);
+}
+
+@media (max-width: 640px) {
+    .card:hover .service-image-container img {
+        transform: none;
+    }
 }
 
 .card h3 {
@@ -618,6 +706,14 @@ nav a:hover::after {
     transform: translateY(-2px);
 }
 
+@media (max-width: 640px) {
+    .location-tag:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
 .location-tag.active {
     background: rgba(255, 102, 0, 0.18);
     border-color: var(--laranja);
@@ -716,6 +812,16 @@ footer hr {
     animation: none;
 }
 
+@media (max-width: 640px) {
+    .whatsapp-btn {
+        animation: none !important;
+    }
+
+    .whatsapp-btn:hover {
+        transform: none;
+    }
+}
+
 /* ==========================================
    RESPONSIVO — TABLET (até 900px)
    ========================================== */
@@ -746,6 +852,7 @@ footer hr {
         align-items: center;
         justify-content: center;
         box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
     }
 
     nav.nav-open {
@@ -824,10 +931,19 @@ footer hr {
 
     header {
         padding: 8px 4%;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
     }
 
     .logo-img {
         height: 52px;
+    }
+
+    .card {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .cards {
@@ -854,6 +970,7 @@ footer hr {
 
     footer {
         padding: 45px 5% 18px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
     }
 
     footer p {
@@ -870,6 +987,8 @@ footer hr {
 
     .map-container {
         height: 320px;
+        box-shadow: 0 2px 8px rgba(255, 102, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 102, 0, 0.15);
     }
 
     .map-locations {
@@ -879,6 +998,12 @@ footer hr {
     .location-tag {
         padding: 8px 16px;
         font-size: 0.85rem;
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: none;
+    }
+
+    .location-tag:hover {
+        box-shadow: none;
     }
 
     /* WhatsApp button menor no mobile */
@@ -888,6 +1013,28 @@ footer hr {
         font-size: 28px;
         bottom: 20px;
         right: 20px;
+        box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
+    }
+
+    /* Remover will-change em mobile para economizar memória */
+    .animate-on-scroll {
+        will-change: auto;
+    }
+
+    .service-image-container img {
+        will-change: auto;
+    }
+
+    .btn-cta {
+        will-change: auto;
+    }
+
+    .location-tag {
+        will-change: auto;
+    }
+
+    .whatsapp-btn {
+        will-change: auto;
     }
 }
 
@@ -898,6 +1045,7 @@ footer hr {
     .hero {
         min-height: 50vh;
         padding: 40px 16px;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('image_7.png') center/cover no-repeat;
     }
 
     .hero h1 {
@@ -919,6 +1067,15 @@ footer hr {
         font-size: 1.5rem;
     }
 
+    .card {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+        border-bottom: 3px solid var(--laranja);
+    }
+
     .card h3 {
         font-size: 0.98rem;
         margin: 14px 16px 6px;
@@ -936,6 +1093,19 @@ footer hr {
     nav {
         width: 100%;
         right: -100%;
+    }
+
+    .map-wrapper img {
+        box-shadow: 0 2px 6px rgba(255, 102, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    .map-wrapper img:hover {
+        box-shadow: 0 3px 10px rgba(255, 102, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Desabilitar will-change para economizar memória em mobile pequeno */
+    * {
+        will-change: auto !important;
     }
 }
 
